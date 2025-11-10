@@ -178,15 +178,17 @@ jobs:
           fi
 
           $GITHUB_WORKSPACE/Scripts/Settings.sh
+          cat -n ./.config
 
           make defconfig -j$(nproc)
-          cat -n ./.config
+
 
       - name: Download Packages
         if: env.WRT_TEST != 'true'
         run: |
           cd ./wrt/
-
+          cat -n .config
+          
           make download -j$(nproc)
 
       - name: Compile Firmware
